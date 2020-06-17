@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function test() {
+//            this
+        }
+        test();
+
+
+        var o = {
+			name: "叶鑫",
+			sayHello: function () {
+				this.sayHi();
+			},
+			sayHi: function () {
+				console.log("Hello我是" + this.name);
+			}
+		}
+        console.log(name);
+
+        o.sayHello();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

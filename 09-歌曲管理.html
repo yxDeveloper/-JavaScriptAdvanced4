@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let songList = [
+			{
+				songName:"情书",
+				singer:"张学友"
+			},
+			{
+				songName:"演员",
+				singer:"薛小谦"
+			},
+			{
+				songName:"李白",
+				singer:"李荣浩"
+			}
+		];
+		// 增删改查
+		songList.push({
+			songName:"今天你要嫁给我",
+			singer:"陶喆"
+		});
+		// console.log(songList);
+		
+		// 删
+		// for(let i = 0;i < songList.length; i++) {
+		// 	let song = songList[i];
+		// 	if(song.songName == "李白") {
+		// 		// splice(起始索引，删几个)
+		// 		songList.splice(i,1);
+		// 	}
+		// }
+		// console.log(songList);
+		// 
+		// 改
+		// 遍历歌曲列表,找到要修改的对象
+		// for(let j = 0; j < songList.length; j++) {
+		// 	let song = songList[j];
+		// 	判断每次便利的对象的歌名,和要找的歌名是不是一致,如果一致,就是我们要找的对象
+		// 	if(song.songName == "演员") {
+		// 		// 找到要修改的对象进行修改
+		// 		song.singer = "薛之谦";
+		// 	}
+		// 	
+		// }
+		// console.log(songList);
+		
+		// 查
+		for(let k = 0; k < songList.length; k++) {
+			let song = songList[k];
+			if(song.songName == "情书") {
+				console.log(song);
+			}
+		}
+		// console.log(songList);
+		
+    </script>
+</head>
+<body>
+
+</body>
+</html>

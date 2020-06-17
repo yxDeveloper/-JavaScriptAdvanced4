@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       const songList = Array.of({
+               songName:"情书",
+               singer:"张学友"
+           },
+           {
+               songName:"演员",
+               singer:"薛小谦"
+           },
+           {
+               songName:"李白",
+               singer:"李荣浩"
+           });
+// 		   [
+//            
+// 
+//        ];
+	   
+	   function SongManager() {
+		   this.songList = null;
+	   }
+
+        //在当前对象的方法中，调用当前对象的其他方法，需要使用this
+        //例如 在 removeSong方法中调用 selectSong  this.selectSong
+        SongManager.prototype = {
+			init: function (songList) {
+				this.songList = songList;
+			},
+			addSong: function (song) {
+				this.songList.push(song);
+			},
+			removeSong: function (songName) {
+				let song = this.selectSong(songName);
+				if(song == null) {
+					throw "您要删除的歌曲不存在！请重新尝试";
+				}
+				let index = this.songList.indexOf(song);
+				this.songList.splice(index,1);
+			},
+			updateSong: function (songName,singer) {
+				var song = this.selectSong(songName);
+				if(song == null) {
+					throw "您要删除的歌曲不存在！请重新尝试";
+				}
+				song.singer = singer;
+			},
+			selectSong: function (songName) {
+				for (let i = 0; i < this.songList.length; i++) {
+					let song = this.songList[i];
+					if(song.songName == songName) {
+						return song;
+					}
+				}
+				return null;
+			}
+						
+		};
+		
+
+        var yxDEManager = new SongManager();
+        yxDEManager.init([
+            {
+                songName:"青藏高原",
+                singer:"潘文斌"
+            },
+            {
+                songName:"我的换板鞋，摩擦摩擦最时尚",
+                singer:"约翰逊，庞麦郎"
+            }
+        ]);
+        yxDEManager.addSong({
+            songName:"东风破",
+            singer:"Jay Chou"
+        })
+
+        var ysDEManager = new SongManager();
+        ysDEManager.init([
+            {
+                songName:"两只老虎",
+                singer:"叶鑫"
+            },
+            {
+                songName:"粉刷匠",
+                singer:"叶苏"
+            }
+        ]);
+//        ysDEManager.removeSong("李白");
+        // ysDEManager.removeSong("两只老虎");
+        console.log(yxDEManager.songList);
+        console.log(ysDEManager.songList);
+		
+		let yxDeManager = new SongManager();
+		yxDeManager.init(songList);
+		console.log(yxDeManager.songList);
+
+
+        //要封装一个歌曲管理的工具
+        //特征：歌曲列表
+        //行为：增  删  改 查
+
+        //学生管理系统
+        //特征：学生列表
+        //行为：增删改查
+		
+		
+		// ===================================================
+		// es6(2015)
+		
+		class NewSongManager {
+			constructor () {
+				this.songList = null;
+			}
+			init (songList) {
+				this.songList = songList;
+			}
+			addSong (song) {
+				this.songList.push(song);
+			}
+			removeSong (songName) {
+				let song = this.selectSong(songName);
+				if(song == null){
+				    throw "您要删除的歌曲不存在！请重新尝试";
+				}
+				// let index = this.songList.findIndex(song);
+				let index = this.songList.indexOf(song);
+				this.songList.splice(index,1);
+			}
+			updateSong (songName,singer) {
+				let song = this.selectSong(songName);
+				if(song == null){
+				    throw "您要删除的歌曲不存在！请重新尝试";
+				}
+				
+				// console.log(this.songList.findIndex(song));
+				// console.log(this.songList.find(song));
+				// console.log(this.songList.filter(function(item) {
+				// 	return item == song;
+				// }));
+				
+				// let index = this.songList.findIndex(song);
+				// Array.fill(singer);
+				
+				song.singer = singer;
+
+			}
+			selectSong (songName) {
+				for (var k = 0; k < this.songList.length; k++) {
+					let song = this.songList[k];
+					if(song.songName == songName) {
+						return song;
+					}
+				}
+			}
+		}
+		var yx = new NewSongManager();
+		yx.init([
+		    {
+		        songName:"两只老虎",
+		        singer:"叶鑫"
+		    },
+		    {
+		        songName:"粉刷匠",
+		        singer:"叶苏"
+		    }
+		]);
+		yx.addSong({
+            songName:"东风破",
+            singer:"Jay Chou"
+        })
+		yx.removeSong("粉刷匠");
+		yx.updateSong("两只老虎","夜神");
+		console.log(yx);
+		
+    </script>
+</head>
+<body>
+
+</body>
+</html>

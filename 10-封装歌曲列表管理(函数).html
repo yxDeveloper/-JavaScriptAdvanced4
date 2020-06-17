@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var songList = [
+            {
+                songName:"情书",
+                singer:"张学友"
+            },
+            {
+                songName:"演员",
+                singer:"薛小谦"
+            },
+            {
+                songName:"李白",
+                singer:"李荣浩"
+            }
+
+        ];
+        //增删该查
+
+        //增
+		function addSong(song) {
+			songList.push(song);
+		}
+
+
+       addSong({
+           songName:"take me to your heart",
+           singer:"迈克学摇滚"
+       });
+
+       // console.log(songList);
+
+       //删
+		function removeSong(songName) {
+			let song = selectSong(songName);
+			let index = songList.indexOf(song);
+			songList.splice(index,1);
+			
+			// for(let i = 0; i < songList.length; i++) {
+			// 	let arr = songList[i];
+			// 	if(arr.songName == songName) {
+			// 		songList.splice(i,1);
+			// 	}
+			// }
+		}
+
+        removeSong("李白");
+//
+       // console.log(songList);
+// //
+//         //改
+        function updateSong(songName,singer) {
+			let song = selectSong(songName);
+			song.singer = singer;
+			
+			// for(let j = 0; j < songList.length; j++) {
+			// 	let arr = songList[j];
+			// 	if(arr.songName == songName) {
+			// 		arr.singer = songer;
+			// 	}
+			// }
+		}
+//
+       updateSong("演员","薛之谦");
+       // console.log(songList);
+// //
+//         //查
+        function selectSong(song) {
+			for(let k = 0;k < songList.length; k++) {
+				let arr = songList[k];
+				if(arr.songName == song) {
+					return arr;
+				}
+			}
+			return null;
+		}
+		
+        var obj = selectSong("情书");
+        console.log(obj);
+        //
+               console.log(songList);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
